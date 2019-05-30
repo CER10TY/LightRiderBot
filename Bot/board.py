@@ -20,6 +20,7 @@ class Board:
         self.width = width
         self.height = height
         self.cell = [[[EMPTY] for col in range(0, width)] for row in range(0, height)]
+        self.player_id = 0
 
     @staticmethod
     def parse_cell_char(players, row, col, char):
@@ -50,7 +51,7 @@ class Board:
         for cell in cells:
             if col >= self.width:
                 col = 0
-                row +=1
+                row += 1
             self.cell[row][col] = self.parse_cell(players, row, col, cell)
             col += 1
 
@@ -64,18 +65,19 @@ class Board:
 
     def is_legal_tuple(self, loc):
         row, col = loc
-        return self.is_legal(row, col)
+        return self.is_legal(row, col, self.player_id)
 
     def get_adjacent(self, row, col):
         result = []
         for (o_row, o_col), _ in DIRS:
             t_row, t_col = o_row + row, o_col + col
-            if self.is_legal(t_row, t_col):
+            if self.is_legal(t_row, t_col, self.player_id):
                 result.append((t_row, t_col))
         return result
 
     def legal_moves(self, my_id, players):
         my_player = players[my_id]
+        player_id = my_id
         result = []
         for ((o_row, o_col), order) in DIRS:
             t_row = my_player.row + o_row
