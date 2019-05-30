@@ -86,7 +86,7 @@ class Game():
         sys.stdout.flush()
 
     @staticmethod
-    def issue_order_pass(self):
+    def issue_order_pass():
         """ pass the turn """
         sys.stdout.write('pass\n')
         sys.stdout.flush()
