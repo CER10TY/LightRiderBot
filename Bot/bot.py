@@ -1,13 +1,9 @@
-import random
-import sys
-import math
-
 
 class Bot:
 
     def __init__(self):
         self.game = None
-        self.max_depth = 1
+        self.max_depth = 3
 
     def setup(self, game):
         self.game = game
