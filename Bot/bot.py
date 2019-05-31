@@ -1,7 +1,6 @@
 import random
 import sys
 import math
-import copy
 
 
 class Bot:
@@ -21,8 +20,7 @@ class Bot:
             best_val = float('-inf')
             best_move = 'pass'
             for (_, chosen) in legal:
-                val = self.minimax(0, False, float('-inf'), float('inf'))
-                sys.stderr.write("DEBUG INFO: %d" % val)
+                val = self.minimax(0, True, float('-inf'), float('inf'))
                 if val > best_val:
                     best_val = val
                     best_move = chosen
@@ -65,7 +63,6 @@ class Bot:
         score = 0
 
         for (row, col), order in my_legal:
-            sys.stderr.write("DEBUG INFO, my row: %s" % str(row))
             self.simulate_move(row, col, self.game.my_botid)
             legal = self.game.field.legal_moves(self.game.my_botid, self.game.players)
             score += len(legal) * 5

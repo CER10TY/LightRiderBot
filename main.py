@@ -1,5 +1,4 @@
 # starter bot refactored from Riddles Hackman python2 starter bot
-import sys
 
 from Bot.game import Game
 from Bot.bot import Bot

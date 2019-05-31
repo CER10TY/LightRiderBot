@@ -1,4 +1,3 @@
-import copy
 import sys
 
 PLAYER1, PLAYER2, EMPTY, BLOCKED = [0, 1, 2, 3]

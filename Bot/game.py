@@ -3,7 +3,6 @@
 
 import sys
 import traceback
-import random
 import time
 
 from . import board
